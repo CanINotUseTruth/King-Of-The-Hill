@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "koth",
+  "version": "${version}",
+
+  "name": "King Of The Hill",
+  "description": "",
+  "authors": [
+    "TRUTH"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "MIT License",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.truth.koth.KingOfTheHill"
+    ],
+    "client": [
+      "net.truth.koth.KingOfTheHillClient"
+    ]
+  },
+  "mixins": [
+    "koth.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
