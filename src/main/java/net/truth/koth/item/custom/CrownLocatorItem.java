@@ -25,7 +25,7 @@ public class CrownLocatorItem extends Item {
             CommandManager commandManager = Objects.requireNonNull(world.getServer()).getCommandManager();
             if(targetEntity != null) {
                 commandManager.executeWithPrefix(world.getServer().getCommandSource(),
-                        "title " + user.getEntityName() + " actionbar [" + getTargetJSONObj() + "," + getCrownPosJSONObj() + "," + getDimensionJSONObj() + "]");
+                        "title " + user.getEntityName() + " actionbar [" + getTargetJSONObj() + "," + getDividerJSONObj()+ "," + getCrownPosJSONObj() + "," + getDividerJSONObj()+ "," +  getDimensionJSONObj() + "]");
             } else {
                 commandManager.executeWithPrefix(world.getServer().getCommandSource(), "title " + user.getEntityName() + " actionbar {\"text\":\"No King Found!\",\"color\":\"gold\"}");
             }
@@ -62,12 +62,16 @@ public class CrownLocatorItem extends Item {
     public static String getCrownPosJSONObj() {
         Vec3d crownPos = targetEntity.getPos();
         String posText = "x: " + Math.round(crownPos.x) + " y: " + Math.round(crownPos.y) + " z: " + Math.round(crownPos.z);
-        return "{\"text\":\"" + posText + " \",\"color\":\"aqua\"}";
+        return "{\"text\":\"" + posText + "\",\"color\":\"dark_aqua\"}";
     }
 
     public static String getTargetJSONObj() {
         String nameText = targetEntity.getEntityName();
-        return "{\"text\":\"" + nameText + " \",\"color\":\"gold\"}";
+        return "{\"text\":\"" + nameText + "\",\"color\":\"gold\"}";
+    }
+
+    public static String getDividerJSONObj() {
+        return "{\"text\":\" | \",\"color\":\"dark_gray\"}";
     }
 
     public static void setTargetEntity(LivingEntity entity) {
