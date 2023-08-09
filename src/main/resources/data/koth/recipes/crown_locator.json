@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "$": {
+      "item": "minecraft:copper_block"
+    },
+    "^": {
+      "item": "minecraft:gold_ingot"
+    },
+    "%": {
+      "item": "minecraft:compass"
+    }
+  },
+  "pattern": [
+    "^%^",
+    " $ ",
+    " # "
+  ],
+  "result": {
+    "item": "koth:crown_locator"
+  },
+  "show_notification": true
+}

@@ -10,9 +10,9 @@ import net.truth.koth.item.custom.KingsCrownItem;
 
 public class ModItems {
     public static final Item KINGS_CROWN = registerItem("kings_crown",
-            new KingsCrownItem(new FabricItemSettings().group(ModItemGroup.KOTH)));
+            new KingsCrownItem(new FabricItemSettings().maxCount(1).group(ModItemGroup.KOTH)));
     public static final Item CROWN_LOCATOR = registerItem("crown_locator",
-            new CrownLocatorItem(new FabricItemSettings().group(ModItemGroup.KOTH)));
+            new CrownLocatorItem(new FabricItemSettings().maxCount(1).group(ModItemGroup.KOTH)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(KingOfTheHill.MOD_ID, name), item);
