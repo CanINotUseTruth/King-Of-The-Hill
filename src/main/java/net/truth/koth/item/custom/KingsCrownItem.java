@@ -32,7 +32,7 @@ public class KingsCrownItem extends TrinketItem {
 
     @Override
     public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-        KingsCompassItem.setTargetEntity(entity);
+        CrownLocatorItem.setTargetEntity(entity);
         if(entity.hasStatusEffect(StatusEffects.GLOWING)) return;
         StatusEffectInstance effectInstance = new StatusEffectInstance(StatusEffects.GLOWING, Integer.MAX_VALUE, 0, false, false);
         if(entity.world.isClient) effectInstance.setPermanent(true);
@@ -41,7 +41,7 @@ public class KingsCrownItem extends TrinketItem {
 
     @Override
     public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-        KingsCompassItem.removeTargetEntity();
+        CrownLocatorItem.removeTargetEntity();
         if(!entity.hasStatusEffect(StatusEffects.GLOWING)) return;
         entity.removeStatusEffect(StatusEffects.GLOWING);
     }
