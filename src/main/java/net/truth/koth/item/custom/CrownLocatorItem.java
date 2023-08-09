@@ -30,6 +30,7 @@ public class CrownLocatorItem extends Item {
                 commandManager.executeWithPrefix(world.getServer().getCommandSource(), "title " + user.getEntityName() + " actionbar {\"text\":\"No King Found!\",\"color\":\"gold\"}");
             }
         }
+        user.getItemCooldownManager().set(this, 200);
         return TypedActionResult.success(this.getDefaultStack());
     }
 
