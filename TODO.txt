@@ -1,10 +1,12 @@
 - TODO
-    - Locator model bob
-    - Potentially switch tracking system to tag on player/nearest player with tag?
-    - See if I can make armor model for trinket - Floating crown? - Use artifacts as reference
+    - UV Map on block bench with new texture file
+    - Use Item model for crown item
     - Finish ReadMe
     - Make Curseforge
         - Specify crown must be spawned in/only one crown should exist at a time for game purposes
-    - Find a way of using action bar without spamming console
-    - Cooldown on use of crown locator
     - Limit server to having one of crown
+    - Locator model bob - When final model made and decided
+    - Potentially switch tracking system to tag on player/nearest player with tag?
+    - Limit server to one crown
+    - Curse of binding???
+    - Direct transfer of trinket on death
