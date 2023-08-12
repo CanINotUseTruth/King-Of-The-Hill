@@ -1,11 +1,11 @@
 package net.truth.koth.item.custom;
 
 import com.google.common.collect.Multimap;
-import dev.emi.trinkets.api.SlotReference;
-import dev.emi.trinkets.api.TrinketItem;
+import dev.emi.trinkets.api.*;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -18,12 +18,18 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
 import net.truth.koth.KingOfTheHill;
 import net.truth.koth.client.TrinketModel;
 
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.UUID;
 
 public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
@@ -47,6 +53,11 @@ public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
     }
 
     @Override
+    public TrinketEnums.DropRule getDropRule(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        return TrinketEnums.DropRule.KEEP;
+    }
+
+    @Override
     public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
         CrownLocatorItem.setTargetEntity(entity);
         if(entity.hasStatusEffect(StatusEffects.GLOWING)) return;
@@ -60,6 +71,11 @@ public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
         CrownLocatorItem.removeTargetEntity();
         if(!entity.hasStatusEffect(StatusEffects.GLOWING)) return;
         entity.removeStatusEffect(StatusEffects.GLOWING);
+    }
+
+    @Override
+    public boolean canUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        return false;
     }
 
     @Override

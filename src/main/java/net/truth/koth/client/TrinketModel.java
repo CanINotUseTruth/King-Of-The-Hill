@@ -25,12 +25,12 @@ public class TrinketModel extends BipedEntityModel<LivingEntity> {
         head.addChild("main", ModelPartBuilder.create()
                 .uv(0, 9)
                 .cuboid(-2f, -14f, -2f, 4f, 2f, 4f), ModelTransform.NONE);
-        head.addChild("gem_top", ModelPartBuilder.create()
-                .uv(0, 15)
-                .cuboid(-1f, -18f, -1f, 2f, 2f, 2f), ModelTransform.NONE);
-        head.addChild("point_top", ModelPartBuilder.create()
-                .uv(0, 19)
-                .cuboid(-0.5f, -16f, -0.5f, 1f, 1f, 1f), ModelTransform.NONE);
+//        head.addChild("gem_top", ModelPartBuilder.create()
+//                .uv(0, 15)
+//                .cuboid(-1f, -18f, -1f, 2f, 2f, 2f), ModelTransform.NONE);
+//        head.addChild("point_top", ModelPartBuilder.create()
+//                .uv(0, 19)
+//                .cuboid(-0.5f, -16f, -0.5f, 1f, 1f, 1f), ModelTransform.NONE);
         head.addChild("gem_front", ModelPartBuilder.create()
                 .uv(0, 15)
                 .cuboid(-1f, -12f, -4f, 2f, 2f, 2f), ModelTransform.NONE);
