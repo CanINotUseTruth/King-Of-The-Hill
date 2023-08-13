@@ -5,10 +5,12 @@ import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.truth.koth.KingOfTheHill;
+import net.truth.koth.item.ModItems;
 import net.truth.koth.util.CrownUtil;
 
 import static net.minecraft.command.argument.EntityArgumentType.getPlayer;
@@ -24,16 +26,22 @@ public class ClearCrownCommand {
                     .executes((command) -> {
                         ServerPlayerEntity player = getPlayer(command, "player");
                         var optional = TrinketsApi.getTrinketComponent(player);
-                        if (optional.isPresent() && !player.world.isClient()) {
+                        // Check Inventory slots
+                        if(player.getInventory().contains(ModItems.KINGS_CROWN.getDefaultStack())) {
+                            for(int i = 0; i < player.getInventory().size() - 1; i++) {
+                                if(player.getInventory().getStack(i).getItem() == ModItems.KINGS_CROWN) {
+                                    player.getInventory().setStack(i, Items.AIR.getDefaultStack());
+                                    KingOfTheHill.LOGGER.info("Crown trinket removed from player");
+                                }
+                            }
+                        }
+                        // Check trinket slot
+                        if ((optional.isPresent()) && !player.world.isClient()) {
                             TrinketComponent comp = optional.get();
-                            if(CrownUtil.hasCrown(comp)) {
+                            if (CrownUtil.hasCrown(comp)) {
                                 CrownUtil.deleteCrown(comp);
                                 KingOfTheHill.LOGGER.info("Crown trinket removed from player");
-                            } else {
-                                KingOfTheHill.LOGGER.info("Player does not have the crown trinket!");
                             }
-                        } else {
-                            KingOfTheHill.LOGGER.info("Player does not have any trinket information!");
                         }
                         return 1;
                     }))));

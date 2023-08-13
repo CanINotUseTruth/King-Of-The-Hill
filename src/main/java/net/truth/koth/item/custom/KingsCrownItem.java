@@ -92,7 +92,6 @@ public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> getModel() {
         if (this.model == null) {
-            // Vanilla 1.17 uses EntityModels, EntityModelLoader and EntityModelLayers
             this.model = new TrinketModel(TrinketModel.getTexturedModelData().createModel());
         }
 

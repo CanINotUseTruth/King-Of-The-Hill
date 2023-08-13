@@ -1,6 +1,12 @@
 - TODO
-    - ClearCrown command check inventory as well
     - Finish ReadMe
-    - Make Curseforge
         - Specify crown must be spawned in/only one crown should exist at a time for game purposes
-    - Locator model bob - When final model made and decided
+    - Make Curseforge
+        - Write Markdown description
+        - Logo Image
+        - Summary
+        - Header Image for page - KING OF THE HILL
+        - Specify crown must be spawned in/only one crown should exist at a time for game purposes
+    - Get models from shark
+        - Locator model bob - When final model made and decided
+        - Implement models
