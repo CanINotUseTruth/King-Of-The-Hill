@@ -1,12 +1,12 @@
 - TODO
-    - Finish ReadMe
-        - Specify crown must be spawned in/only one crown should exist at a time for game purposes
-    - Make Curseforge
-        - Write Markdown description
-        - Logo Image
-        - Summary
-        - Header Image for page - KING OF THE HILL
-        - Specify crown must be spawned in/only one crown should exist at a time for game purposes
-    - Get models from shark
+    - Other
+        - Finish ReadMe
+            - Specify crown must be spawned in/only one crown should exist at a time for game purposes
+        - Make Curseforge
+            - Write Markdown description
+            - Summary
+            - Header Image for page - KING OF THE HILL
+            - Specify crown must be spawned in/only one crown should exist at a time for game purposes
+    - Gameplay
         - Locator model bob - When final model made and decided
-        - Implement models
+        - Variable proximity locator when king offline?

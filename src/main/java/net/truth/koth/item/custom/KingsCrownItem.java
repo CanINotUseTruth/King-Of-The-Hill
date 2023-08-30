@@ -5,7 +5,6 @@ import dev.emi.trinkets.api.*;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -18,18 +17,12 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.world.World;
 import net.truth.koth.KingOfTheHill;
 import net.truth.koth.client.TrinketModel;
 
 
-import java.io.File;
-import java.nio.file.Path;
 import java.util.UUID;
 
 public class KingsCrownItem extends TrinketItem implements TrinketRenderer {

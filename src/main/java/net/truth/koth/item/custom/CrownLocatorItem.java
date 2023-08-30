@@ -9,6 +9,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.truth.koth.KingOfTheHill;
 
 public class CrownLocatorItem extends Item {
 
@@ -20,18 +21,35 @@ public class CrownLocatorItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if(!world.isClient()) {
-            //TODO Fix this with new implementation
             if(targetEntity != null) {
-                user.sendMessage(Text.of(getTargetName() + getDivider() + getCrownPos() + getDivider() + getDimensionName()), true);
+                if(world.getPlayerByUuid(targetEntity.getUuid()) == null) {
+                    user.sendMessage(Text.literal("§6King" + getTargetName() + "§6Offline!"), true);
+                    return TypedActionResult.success(this.getDefaultStack());
+                }
+
+                if(targetEntity.getWorld().getDimensionKey() != user.getWorld().getDimensionKey()) {
+                    user.sendMessage(Text.literal("§6The King is in a Different Dimension" + getDivider() + getDimensionName()), true);
+                    return TypedActionResult.success(this.getDefaultStack());
+                }
+
+                if(targetEntity.getUuid() == user.getUuid()) {
+                    user.sendMessage(Text.literal("§6You're the King"), true);
+                    return TypedActionResult.success(this.getDefaultStack());
+                }
+
+                if(KingOfTheHill.CONFIG.EXACT_COORDINATES) {
+                    user.sendMessage(Text.of(getTargetName() + getDivider() + getCrownPos() + getDivider() + getDimensionName()), true);
+                } else {
+                    user.sendMessage(Text.of(getTargetName() + getDivider() + getCrownDirection(user) + getDivider() + getDimensionName()), true);
+                }
             } else {
                 user.sendMessage(Text.literal("§6No King Found!"), true);
             }
         }
-        user.getItemCooldownManager().set(this, 200);
+        user.getItemCooldownManager().set(this, 120);
         return TypedActionResult.success(this.getDefaultStack());
     }
 
-    //TODO Fix this with new implementation
     public static String getDimensionName() {
         String dimensionKey = targetEntity.getWorld().getDimensionKey().getValue().toShortTranslationKey();
         String dimensionText;
@@ -58,20 +76,59 @@ public class CrownLocatorItem extends Item {
         return dimensionColor + dimensionText;
     }
 
-    //TODO Fix this with new implementation
     public static String getCrownPos() {
         Vec3d crownPos = targetEntity.getPos();
         String posText = "x: " + Math.round(crownPos.x) + " y: " + Math.round(crownPos.y) + " z: " + Math.round(crownPos.z);
         return "§3" + posText;
     }
 
-    //TODO Fix this with new implementation
+    public static String getCrownDirection(PlayerEntity user) {
+
+        double xDiff = targetEntity.getX() - user.getX();
+        double yDiff = targetEntity.getY() - user.getY();
+        double zDiff = targetEntity.getZ() - user.getZ();
+        double finalDist = Math.sqrt((xDiff * xDiff) + (yDiff * yDiff) + (zDiff * zDiff));
+        String directionText = "";
+
+        double angle = Math.toDegrees(Math.atan2(zDiff, xDiff));
+        if (angle < 0) {
+            angle += 360;
+        }
+
+        if (angle >= 22.5 && angle < 67.5) {
+            directionText = "SE";
+        } else if (angle >= 67.5 && angle < 112.5) {
+            directionText = "S";
+        } else if (angle >= 112.5 && angle < 157.5) {
+            directionText = "SW";
+        } else if (angle >= 157.5 && angle < 202.5) {
+            directionText = "W";
+        } else if (angle >= 202.5 && angle < 247.5) {
+            directionText = "NW";
+        } else if (angle >= 247.5 && angle < 292.5) {
+            directionText = "N";
+        } else if (angle >= 292.5 && angle < 337.5) {
+            directionText = "NE";
+        } else {
+            directionText = "E";
+        }
+
+        if (xDiff < KingOfTheHill.CONFIG.VERTICAL_RADIUS || zDiff < KingOfTheHill.CONFIG.VERTICAL_RADIUS) {
+            if(yDiff > 0) {
+                directionText += " U";
+            } else {
+                directionText += " D";
+            }
+        }
+
+        return "§3" + Math.round(finalDist) + " Blocks " + directionText;
+    }
+
     public static String getTargetName() {
         String nameText = targetEntity.getEntityName();
         return "§6" + nameText;
     }
 
-    //TODO Fix this with new implementation
     public static String getDivider() {
         return "§8 | ";
     }
