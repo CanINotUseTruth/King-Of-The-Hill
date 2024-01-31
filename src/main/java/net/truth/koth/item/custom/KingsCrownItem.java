@@ -36,12 +36,10 @@ public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
 
     public Multimap<EntityAttribute, EntityAttributeModifier> getModifiers(ItemStack stack, SlotReference slot, LivingEntity entity, UUID uuid) {
         var modifiers = super.getModifiers(stack, slot, entity, uuid);
-        // +250% Health
-        modifiers.put(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier(uuid, "koth:health", 2.5, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+        // +200% Health
+        modifiers.put(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier(uuid, "koth:health", 2, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
         // +50% Knockback
         modifiers.put(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier(uuid, "koth:knockback", 0.5, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
-        // +100% Armor
-        modifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uuid, "koth:armor", 1.0, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
         return modifiers;
     }
 

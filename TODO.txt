@@ -1,7 +1,5 @@
 - TODO
     - Other
-        - Finish ReadMe
-            - Specify crown must be spawned in/only one crown should exist at a time for game purposes
         - Make Curseforge
             - Write Markdown description
             - Summary
