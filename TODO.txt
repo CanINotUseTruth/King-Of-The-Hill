@@ -1,0 +1,10 @@
+- TODO
+    - Other
+        - Make Curseforge
+            - Write Markdown description
+            - Summary
+            - Header Image for page - KING OF THE HILL
+            - Specify crown must be spawned in/only one crown should exist at a time for game purposes
+    - Gameplay
+        - Locator model bob - When final model made and decided
+        - Variable proximity locator when king offline?
