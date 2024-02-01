@@ -36,7 +36,7 @@ public class ClearCrownCommand {
                             }
                         }
                         // Check trinket slot
-                        if ((optional.isPresent()) && !player.world.isClient()) {
+                        if ((optional.isPresent()) && !player.getWorld().isClient()) {
                             TrinketComponent comp = optional.get();
                             if (CrownUtil.hasCrown(comp)) {
                                 CrownUtil.deleteCrown(comp);

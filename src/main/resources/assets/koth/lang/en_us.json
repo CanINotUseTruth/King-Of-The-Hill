@@ -1,6 +1,6 @@
 {
   "item.koth.crown_locator": "King Locator",
   "item.koth.kings_crown": "King's Crown",
-  "itemGroup.koth.creative_tab": "King of the Hill",
+  "itemGroup.koth": "King of the Hill",
   "trinkets.slot.head.crown": "Crown"
 }

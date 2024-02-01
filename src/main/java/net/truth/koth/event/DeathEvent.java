@@ -10,7 +10,7 @@ import net.truth.koth.util.CrownUtil;
 public class DeathEvent {
     public static void onDeathEvent(ServerPlayerEntity player, DamageSource source) {
         var optional = TrinketsApi.getTrinketComponent(player);
-        if (optional.isEmpty() || player.world.isClient()) {
+        if (optional.isEmpty() || player.getWorld().isClient()) {
             return;
         }
 

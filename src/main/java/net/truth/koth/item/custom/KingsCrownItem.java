@@ -53,7 +53,7 @@ public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
         CrownLocatorItem.setTargetEntity(entity);
         if(entity.hasStatusEffect(StatusEffects.GLOWING)) return;
         StatusEffectInstance effectInstance = new StatusEffectInstance(StatusEffects.GLOWING, Integer.MAX_VALUE, 0, false, false);
-        if(entity.world.isClient) effectInstance.setPermanent(true);
+        if(entity.getWorld().isClient) effectInstance.isInfinite();
         entity.addStatusEffect(effectInstance);
     }
 
