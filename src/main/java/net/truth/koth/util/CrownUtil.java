@@ -29,7 +29,6 @@ public class CrownUtil {
                 for (int i = 0; i < inv.size(); i++) {
                     if(inv.getStack(i).getItem() == ModItems.KINGS_CROWN){
                         inv.setStack(i, Items.AIR.getDefaultStack());
-                        CrownLocatorItem.removeTargetEntity();
                     }
                 }
             }

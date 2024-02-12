@@ -18,8 +18,8 @@ public class DeathEvent {
         if(!CrownUtil.hasCrown(comp)) return;
 
         if(source.getAttacker() instanceof PlayerEntity) {
-            CrownUtil.giveCrown((PlayerEntity) source.getAttacker());
             CrownUtil.deleteCrown(comp);
+            CrownUtil.giveCrown((PlayerEntity) source.getAttacker());
         }
     }
 }

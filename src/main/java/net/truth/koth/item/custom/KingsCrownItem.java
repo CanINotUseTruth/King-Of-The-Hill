@@ -59,7 +59,6 @@ public class KingsCrownItem extends TrinketItem implements TrinketRenderer {
 
     @Override
     public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-        CrownLocatorItem.removeTargetEntity();
         if(!entity.hasStatusEffect(StatusEffects.GLOWING)) return;
         entity.removeStatusEffect(StatusEffects.GLOWING);
     }

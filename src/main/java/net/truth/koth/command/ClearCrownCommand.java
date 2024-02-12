@@ -4,13 +4,12 @@ import com.mojang.brigadier.CommandDispatcher;
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.command.argument.EntityArgumentType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import net.truth.koth.KingOfTheHill;
 import net.truth.koth.item.ModItems;
+import net.truth.koth.item.custom.CrownLocatorItem;
 import net.truth.koth.util.CrownUtil;
 
 import static net.minecraft.command.argument.EntityArgumentType.getPlayer;
@@ -40,6 +39,7 @@ public class ClearCrownCommand {
                             TrinketComponent comp = optional.get();
                             if (CrownUtil.hasCrown(comp)) {
                                 CrownUtil.deleteCrown(comp);
+                                CrownLocatorItem.removeTargetEntity();
                                 KingOfTheHill.LOGGER.info("Crown trinket removed from player");
                             }
                         }

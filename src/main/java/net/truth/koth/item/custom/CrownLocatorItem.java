@@ -23,7 +23,7 @@ public class CrownLocatorItem extends Item {
         if(!world.isClient()) {
             if(targetEntity != null) {
                 if(world.getPlayerByUuid(targetEntity.getUuid()) == null) {
-                    user.sendMessage(Text.literal("§6King" + getTargetName() + "§6Offline!"), true);
+                    user.sendMessage(Text.literal("§6King " + getTargetName() + " §6Offline!"), true);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
@@ -116,8 +116,10 @@ public class CrownLocatorItem extends Item {
         if (xDiff < KingOfTheHill.CONFIG.VERTICAL_RADIUS || zDiff < KingOfTheHill.CONFIG.VERTICAL_RADIUS) {
             if(yDiff > 0) {
                 directionText += " U";
-            } else {
+            } else if (yDiff < 0) {
                 directionText += " D";
+            } else {
+                directionText += " -";
             }
         }
 
