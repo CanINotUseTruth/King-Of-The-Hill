@@ -22,18 +22,21 @@ public class CrownLocatorItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if(!world.isClient()) {
             if(targetEntity != null) {
-                if(world.getPlayerByUuid(targetEntity.getUuid()) == null) {
-                    user.sendMessage(Text.literal("§6King " + getTargetName() + " §6Offline!"), true);
+                if(!world.getServer().getPlayerManager().getPlayerList().contains(targetEntity)){
+                    user.sendMessage(Text.literal("§6The King is Offline!"), true);
+                    user.getItemCooldownManager().set(this, 120);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
                 if(targetEntity.getWorld().getDimensionKey() != user.getWorld().getDimensionKey()) {
                     user.sendMessage(Text.literal("§6The King is in a Different Dimension" + getDivider() + getDimensionName()), true);
+                    user.getItemCooldownManager().set(this, 120);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
                 if(targetEntity.getUuid() == user.getUuid()) {
                     user.sendMessage(Text.literal("§6You're the King"), true);
+                    user.getItemCooldownManager().set(this, 120);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
