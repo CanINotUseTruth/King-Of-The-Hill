@@ -23,7 +23,7 @@ public class CrownLocatorItem extends Item {
         if(!world.isClient()) {
             if(targetEntity != null) {
                 if(!world.getServer().getPlayerManager().getPlayerList().contains(targetEntity)){
-                    user.sendMessage(Text.literal("§6The King is Offline!"), true);
+                    user.sendMessage(Text.of("§6The King is Offline!"), true);
                     user.getItemCooldownManager().set(this, 120);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
