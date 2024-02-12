@@ -23,17 +23,17 @@ public class CrownLocatorItem extends Item {
         if(!world.isClient()) {
             if(targetEntity != null) {
                 if(world.getPlayerByUuid(targetEntity.getUuid()) == null) {
-                    user.sendMessage(Text.literal("§6King " + getTargetName() + " §6Offline!"), true);
+                    user.sendMessage(Text.of("§6King " + getTargetName() + " §6Offline!"), true);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
-                if(targetEntity.getWorld().getDimensionKey() != user.getWorld().getDimensionKey()) {
-                    user.sendMessage(Text.literal("§6The King is in a Different Dimension" + getDivider() + getDimensionName()), true);
+                if(targetEntity.getWorld().getDimension() != user.getWorld().getDimension()) {
+                    user.sendMessage(Text.of("§6The King is in a Different Dimension" + getDivider() + getDimensionName()), true);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
                 if(targetEntity.getUuid() == user.getUuid()) {
-                    user.sendMessage(Text.literal("§6You're the King"), true);
+                    user.sendMessage(Text.of("§6You're the King"), true);
                     return TypedActionResult.success(this.getDefaultStack());
                 }
 
@@ -43,7 +43,7 @@ public class CrownLocatorItem extends Item {
                     user.sendMessage(Text.of(getTargetName() + getDivider() + getCrownDirection(user) + getDivider() + getDimensionName()), true);
                 }
             } else {
-                user.sendMessage(Text.literal("§6No King Found!"), true);
+                user.sendMessage(Text.of("§6No King Found!"), true);
             }
         }
         user.getItemCooldownManager().set(this, 120);
@@ -51,7 +51,7 @@ public class CrownLocatorItem extends Item {
     }
 
     public static String getDimensionName() {
-        String dimensionKey = targetEntity.getWorld().getDimensionKey().getValue().toShortTranslationKey();
+        String dimensionKey = targetEntity.getWorld().getRegistryKey().getValue().getNamespace();
         String dimensionText;
         String dimensionColor;
 
