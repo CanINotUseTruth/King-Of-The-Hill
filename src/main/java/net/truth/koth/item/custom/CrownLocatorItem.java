@@ -54,20 +54,20 @@ public class CrownLocatorItem extends Item {
     }
 
     public static String getDimensionName() {
-        String dimensionKey = targetEntity.getWorld().getRegistryKey().getValue().getNamespace();
+        String dimensionKey = targetEntity.getWorld().getRegistryKey().getValue().toString();
         String dimensionText;
         String dimensionColor;
 
         switch (dimensionKey) {
-            case "the_nether" -> {
+            case "minecraft:the_nether" -> {
                 dimensionText = "The Nether";
                 dimensionColor = "§4";
             }
-            case "overworld" -> {
+            case "minecraft:overworld" -> {
                 dimensionText = "Overworld";
                 dimensionColor = "§2";
             }
-            case "the_end" -> {
+            case "minecraft:the_end" -> {
                 dimensionText = "The End";
                 dimensionColor = "§5";
             }
