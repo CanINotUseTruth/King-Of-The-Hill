@@ -10,7 +10,6 @@ import net.truth.koth.command.ClearCrownCommand;
 import net.truth.koth.command.GiveCrownCommand;
 import net.truth.koth.config.Config;
 import net.truth.koth.event.DeathEvent;
-import net.truth.koth.item.ModItemGroup;
 import net.truth.koth.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,6 @@ public class KingOfTheHill implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
-		ModItemGroup.registerItemGroups();
 		loadEvents();
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			ClearCrownCommand.register(dispatcher);
